@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import NavigationMenu from "@/components/common/navigation/NavigationMenu";
+import NavigationHeader from "@/components/common/navigation/NavigationHeader";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavigationMenu/>
+        <NavigationHeader/>
         {children}
       </body>
     </html>

@@ -11,7 +11,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
  
 const components: { title: string; href: string; description: string }[] = [
@@ -54,7 +53,7 @@ const components: { title: string; href: string; description: string }[] = [
  
 export default function NavigationMenuDemo() {
   return (
-  <header className="flex justify-center">
+  <header className="flex justify-center gap-4 border-b bg-background px-4 md:px-6 h-16 top-0">
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
