@@ -16,22 +16,27 @@ export default function Home() {
   return (
     <div>
       <main className={styles.container}>
-        <div className={styles.container__moosu}>
-          <div className={styles.container__moosu__list}>
-            <Card className="w-[300px]">
-              <CardHeader className="relative">
-              <Image src="https://liveimg.sooplive.co.kr/m/277802864" alt="생방송 이미지" width={350} height={300} className={styles.container__moosu__liveimg} />
-              <span className={styles.container__moosu__list__view}>20,000</span>
+          <Card className={styles.container__moosu}>
+            <Card className={styles.container__moosu__list}>
+              <CardHeader className={styles.container__card}>
+              <Image src="https://liveimg.sooplive.co.kr/m/277802864" alt="생방송 이미지" width={350} height={300} className={styles.container__card__liveimg} />
+              <span className={styles.container__card__view}>20,000</span>
+              <span className={styles.container__card__livestart}>2024-10-16</span>
               </CardHeader>
-              <CardContent className="flex">
-              <Avatar>
-                  <AvatarImage src="https://profile.img.sooplive.co.kr/LOGO/kh/khm11903/khm11903.jpg" />
-                  <AvatarFallback>배너</AvatarFallback>
-              </Avatar>
-              <p className="text-xs">
-                와꾸대장봉준
-              </p>
-              </CardContent>
+              <CardContent className="flex items-center">
+                <Avatar>
+                <AvatarImage src="https://profile.img.sooplive.co.kr/LOGO/kh/khm11903/khm11903.jpg" />
+                <AvatarFallback>배너</AvatarFallback>
+           </Avatar>
+  <div className="ml-2">
+    <p className="text-xs font-bold">
+      와꾸대장봉준
+    </p>
+    <p className="text-s">
+      제목입니다
+    </p>
+  </div>
+</CardContent>
               <CardFooter className="flex justify-between">
               <Avatar>
                   <AvatarImage src="/images/soop.png"/>
@@ -43,9 +48,8 @@ export default function Home() {
                 </Avatar>
               </CardFooter>
             </Card>
-          </div>
-          <div className={styles.container__moosu__list}>
-            <Card className="w-[300px]">
+            
+            <Card className={styles.container__moosu__list}>
               <CardHeader>
                 <CardTitle>무수</CardTitle>
                 <CardDescription>Deploy your new project in one-click.</CardDescription>
@@ -67,10 +71,32 @@ export default function Home() {
                 <Button>Deploy</Button>
               </CardFooter>
             </Card>
-          </div>
-        </div>
+          </Card>
 
-        <div className={styles.container__moomem}>
+        <Card className={styles.container__moomem}>
+          <Card className={styles.container__moomem__list}>
+            <CardHeader>
+              <CardTitle>Create project</CardTitle>
+              <CardDescription>Deploy your new project in one-click.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form>
+                <div className="grid w-full items-center gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="name">Name</Label>
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="framework">Framework</Label>
+                  </div>
+                </div>
+              </form>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button variant="outline">Cancel</Button>
+              <Button>Deploy</Button>
+            </CardFooter>
+          </Card>
+
           <div className={styles.container__moomem__list}>
           <Card className="w-[300px]">
             <CardHeader>
@@ -119,31 +145,7 @@ export default function Home() {
             </CardFooter>
           </Card>
           </div>
-          <div className={styles.container__moomem__list}>
-          <Card className="w-[300px]">
-            <CardHeader>
-              <CardTitle>Create project</CardTitle>
-              <CardDescription>Deploy your new project in one-click.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="name">Name</Label>
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="framework">Framework</Label>
-                  </div>
-                </div>
-              </form>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Button variant="outline">Cancel</Button>
-              <Button>Deploy</Button>
-            </CardFooter>
-          </Card>
-          </div>
-        </div>
+        </Card>
 
       </main>
 
