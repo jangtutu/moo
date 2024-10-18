@@ -12,6 +12,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
+
+import ModeToggle from "@/components/common/toggle/ModeToggle"
  
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -104,6 +106,7 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+        <ModeToggle/>
       </NavigationMenuList>
     </NavigationMenu>
   </header>

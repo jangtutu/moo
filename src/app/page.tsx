@@ -16,62 +16,62 @@ export default function Home() {
   return (
     <div>
       <main className={styles.container}>
-          <Card className={styles.container__moosu}>
-            <Card className={styles.container__moosu__list}>
-              <CardHeader className={styles.container__card}>
-              <Image src="https://liveimg.sooplive.co.kr/m/277802864" alt="생방송 이미지" width={350} height={300} className={styles.container__card__liveimg} />
-              <span className={styles.container__card__view}>20,000</span>
-              <span className={styles.container__card__livestart}>2024-10-16</span>
-              </CardHeader>
-              <CardContent className="flex items-center">
-                <Avatar>
+        <Card className={styles.container__moosu}>
+          <Card className={styles.container__moosu__list}>
+            <CardHeader className={styles.container__cardheader}>
+              <Image src="https://liveimg.sooplive.co.kr/m/277802864" alt="생방송 이미지" width={350} height={300} className={styles.container__cardheader__liveimg} />
+              <span className={styles.container__cardheader__view}>20,000</span>
+              <span className={styles.container__cardheader__livestart}>10-18 10:10 방송시작</span>
+            </CardHeader>
+            <CardContent className={styles.container__cardcontent}>
+              <Avatar>
                 <AvatarImage src="https://profile.img.sooplive.co.kr/LOGO/kh/khm11903/khm11903.jpg" />
                 <AvatarFallback>배너</AvatarFallback>
-           </Avatar>
-  <div className="ml-2">
-    <p className="text-xs font-bold">
-      와꾸대장봉준
-    </p>
-    <p className="text-s">
-      제목입니다
-    </p>
-  </div>
-</CardContent>
-              <CardFooter className="flex justify-between">
+              </Avatar>
+              <div className="ml-2">
+                <p className="text-xs font-bold">
+                  와꾸대장봉준
+                </p>
+                <p className="text-s">
+                  제목입니다
+                </p>
+              </div>
+            </CardContent>
+            <CardFooter className={styles.container__cardfooter}>
               <Avatar>
-                  <AvatarImage src="/images/soop.png"/>
-                  <AvatarFallback>숲</AvatarFallback>
-                </Avatar>
-                <Avatar>
-                  <AvatarImage src="/images/youtube.png"/>
-                  <AvatarFallback>유튜브</AvatarFallback>
-                </Avatar>
-              </CardFooter>
-            </Card>
-            
-            <Card className={styles.container__moosu__list}>
-              <CardHeader>
-                <CardTitle>무수</CardTitle>
-                <CardDescription>Deploy your new project in one-click.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form>
-                  <div className="grid w-full items-center gap-4">
-                    <div className="flex flex-col space-y-1.5">
-                      <Label htmlFor="name">Name</Label>
-                    </div>
-                    <div className="flex flex-col space-y-1.5">
-                      <Label htmlFor="framework">Framework</Label>
-                    </div>
-                  </div>
-                </form>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline">Cancel</Button>
-                <Button>Deploy</Button>
-              </CardFooter>
-            </Card>
+                <AvatarImage src="/images/soop.png" />
+                <AvatarFallback>숲</AvatarFallback>
+              </Avatar>
+              <Avatar>
+                <AvatarImage src="/images/youtube.png" />
+                <AvatarFallback>유튜브</AvatarFallback>
+              </Avatar>
+            </CardFooter>
           </Card>
+
+          <Card className={styles.container__moosu__list}>
+            <CardHeader>
+              <CardTitle>무수</CardTitle>
+              <CardDescription>Deploy your new project in one-click.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form>
+                <div className="grid w-full items-center gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="name">Name</Label>
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="framework">Framework</Label>
+                  </div>
+                </div>
+              </form>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button variant="outline">Cancel</Button>
+              <Button>Deploy</Button>
+            </CardFooter>
+          </Card>
+        </Card>
 
         <Card className={styles.container__moomem}>
           <Card className={styles.container__moomem__list}>
@@ -98,52 +98,52 @@ export default function Home() {
           </Card>
 
           <div className={styles.container__moomem__list}>
-          <Card className="w-[300px]">
-            <CardHeader>
-              <CardTitle>Create project</CardTitle>
-              <CardDescription>Deploy your new project in one-click.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="name">Name</Label>
+            <Card className="w-[300px]">
+              <CardHeader>
+                <CardTitle>Create project</CardTitle>
+                <CardDescription>Deploy your new project in one-click.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form>
+                  <div className="grid w-full items-center gap-4">
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="name">Name</Label>
+                    </div>
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="framework">Framework</Label>
+                    </div>
                   </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="framework">Framework</Label>
-                  </div>
-                </div>
-              </form>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Button variant="outline">Cancel</Button>
-              <Button>Deploy</Button>
-            </CardFooter>
-          </Card>
+                </form>
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <Button variant="outline">Cancel</Button>
+                <Button>Deploy</Button>
+              </CardFooter>
+            </Card>
           </div>
           <div className={styles.container__moomem__list}>
-          <Card className="w-[300px]">
-            <CardHeader>
-              <CardTitle>Create project</CardTitle>
-              <CardDescription>Deploy your new project in one-click.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="name">Name</Label>
+            <Card className="w-[300px]">
+              <CardHeader>
+                <CardTitle>Create project</CardTitle>
+                <CardDescription>Deploy your new project in one-click.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form>
+                  <div className="grid w-full items-center gap-4">
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="name">Name</Label>
+                    </div>
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="framework">Framework</Label>
+                    </div>
                   </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="framework">Framework</Label>
-                  </div>
-                </div>
-              </form>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Button variant="outline">Cancel</Button>
-              <Button>Deploy</Button>
-            </CardFooter>
-          </Card>
+                </form>
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <Button variant="outline">Cancel</Button>
+                <Button>Deploy</Button>
+              </CardFooter>
+            </Card>
           </div>
         </Card>
 

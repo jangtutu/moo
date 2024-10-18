@@ -1,10 +1,4 @@
 .container {
-    h5 {
-        font-size: .8rem;
-    }
-    h4 {
-        font-size: .9rem;
-    }
     &__moosu,
     &__moomem {
         display: flex;
@@ -16,17 +10,17 @@
         gap: 15px;
 
         &__list {
-            width: 300px;
+            width: 330px;
 
         }
     }
-    &__card {
+    &__cardheader {
         position: relative;
         &__liveimg {
             border-radius: 10px;
             width: 300px;
         }
-        &:hover .container__card__livestart {
+        &:hover .container__cardheader__livestart {
             opacity: 1;
         }
         &__view {
@@ -69,5 +63,13 @@
             opacity: 0;
             transition: opacity .2s;
         }
+    }
+    &__cardcontent {
+        display: flex;
+        align-items: center;
+    }
+    &__cardfooter {
+        display: flex;
+        justify-content: space-between;
     }
 }
