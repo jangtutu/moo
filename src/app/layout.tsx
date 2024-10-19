@@ -4,15 +4,10 @@ import "@/styles/globals.css";
 import NavigationHeader from "@/components/common/navigation/NavigationHeader";
 import { ThemeProvider } from "@/components/theme-provider"
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
+  display: "swap",
+  weight: "45 920",
 });
 
 export const metadata: Metadata = {
@@ -29,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="ko">
+      <body className={pretendard.className}>
       <ThemeProvider
             attribute="class"
             defaultTheme="system"
