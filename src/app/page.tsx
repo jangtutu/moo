@@ -146,8 +146,12 @@ export default function Home() {
             </Card>
           </div>
         </Card>
-
       </main>
+      <Button className={styles.container__multiview}>멀티뷰로 보기</Button>
+      <div className={styles.container__multiviewbox}>
+        <div className={styles.container__multiviewbox__Warp}></div>
+      </div>
+
 
 
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
