@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   Card,
@@ -11,8 +13,12 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import styles from "./page.module.scss";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useState } from "react";
 
 export default function Home() {
+
+  const [multiViewButton, setMultiviewButton] = useState(false);
+
   return (
     <div>
       <main className={styles.container}>
@@ -147,10 +153,38 @@ export default function Home() {
           </div>
         </Card>
       </main>
-      <Button className={styles.container__multiview}>멀티뷰로 보기</Button>
+      <Button className={`${styles.container__multiviewbutton} ${multiViewButton ? styles.container__multiviewbuttonoff:''}`} onClick={()=> setMultiviewButton(!multiViewButton)}>멀티뷰로 보기</Button>
       <div className={styles.container__multiviewbox}>
-        <div className={styles.container__multiviewbox__Warp}></div>
-      </div>
+        {multiViewButton &&  (
+	<div className={styles.container__multiviewbox__Wrap}>
+		<div className="flex flex-col flex-1 gap-4">
+			<div className="flex items-center gap-2">
+				<h3 className="font-bold">멀티뷰 <span className="opacity-50">최대 9개</span></h3>
+			</div>
+			<div className="flex flex-wrap justify-start gap-4 flex-1">
+				<div className={styles.container__multiviewbox__viewbox}>
+					<div className={styles.container__multiviewbox__viewimg}>
+					</div>
+					<div className={styles.container__multiviewbox__viewdec}>
+						<h5>방송을 선택하세요!</h5>
+						<div className="opacity: 0.5;">
+							클릭시 삭제됩니다.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div className="flex flex-col gap-2 flex-shrink-0 ml-4">
+			<div className="flex flex-col gap-2">
+				<div className="flex gap-2">
+					<button className={styles.container__multiviewbox__button}>소프트콘 멀티뷰</button>
+				</div>
+				<button className={styles.container__multiviewbox__button} onClick={()=> setMultiviewButton(false)}>닫기</button>
+			</div>
+		</div>
+	</div>
+  )}
+</div>
 
 
 
