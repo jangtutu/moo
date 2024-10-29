@@ -16,6 +16,7 @@ import {
 import ModeToggle from "@/components/common/toggle/ModeToggle"
 import { supabase } from "@/utils/supabase";
 import { useEffect,useState } from "react"
+import Image from "next/image";
  
 export default function NavigationMenuDemo() {
 
@@ -42,7 +43,13 @@ export default function NavigationMenuDemo() {
   }, []);
 
   return (
-  <header className="flex justify-center gap-4 border-b bg-background px-4 md:px-6 h-16 top-0">
+  <header className="flex justify-between gap-4 border-b bg-background px-4 md:px-6 h-16 top-0">
+    <div className="flex items-center">
+    <a href="/">
+    <Image src="/images/mooboxBlack.png" alt="로고" width={50} height={50}></Image>
+    </a>
+    </div>
+    <div className="flex-1 flex justify-center">
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
@@ -92,6 +99,7 @@ export default function NavigationMenuDemo() {
         <ModeToggle/>
       </NavigationMenuList>
     </NavigationMenu>
+    </div>
   </header>
   )
 }

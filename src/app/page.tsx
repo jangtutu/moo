@@ -82,6 +82,7 @@ export default function Home() {
           {moosuData.map((broadcast, index) => (
             <Card className={styles.container__moosu__list} key={index}>
               <CardHeader className={styles.container__cardheader}>
+                <a href={`https://play.sooplive.co.kr/${broadcast.station.user_id}`}>
                 <Image
                   src={broadcast.broad?.broad_no
                     ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
@@ -92,12 +93,15 @@ export default function Home() {
                   height={300}
                   className={styles.container__cardheader__liveimg}
                 />
-                <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer || '0'}</span>
+                </a>
+                <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer.toLocaleString() || '0'}</span>
                 <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
+                <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
                   <AvatarImage src={broadcast.profile_image} />
+                </a>
                   <AvatarFallback>배너</AvatarFallback>
                 </Avatar>
                 <div className="ml-2">
@@ -117,6 +121,7 @@ export default function Home() {
           {moomemData.map((broadcast, index) => (
             <Card className={styles.container__moomem__list} key={index}>
               <CardHeader className={styles.container__cardheader}>
+                <a href={`https://play.sooplive.co.kr/${broadcast.station.user_id}`}>
                 <Image
                   src={broadcast.broad?.broad_no
                     ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
@@ -127,12 +132,15 @@ export default function Home() {
                   height={300}
                   className={styles.container__cardheader__liveimg}
                 />
+                </a>
                 <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer || '0'}</span>
                 <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
+                <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
                   <AvatarImage src={broadcast.profile_image} />
+                </a>
                   <AvatarFallback>배너</AvatarFallback>
                 </Avatar>
                 <div className="ml-2">

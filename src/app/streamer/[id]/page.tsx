@@ -1,19 +1,23 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Users, CreditCard, Activity } from "lucide-react";
+import Image from "next/image";
 
-interface StationData {
+interface StreamerData {
   profile_image: string;
   station: {
-    display: {
-      main_type: string;
-      title_type: string;
-      title_text: string;
-      profile_text: string;
-      skin_type: number;
-      skin_no: number;
-      title_skin_image: string;
-    };
-  };
+    total_broad_time: string;
+    jointime: string;
+  upd: {
+    fan_cnt: string;
+    total_view_cnt: string;
+    total_ok_cnt: string;
+  }
+  user_id: string;
+  user_nick: string;
+}
+  subscription: {
+    count: string;
+  }
 }
 
 interface PageProps {
@@ -39,58 +43,76 @@ export default async function Page({ params }: PageProps) {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
 
-    const data: StationData = await res.json();
-
-    // 데이터를 받아서 UI로 출력
-    console.log("받은 데이터:", data);
+    const data: StreamerData = await res.json();
+    console.log(data);
 
     return (
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-        <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+        <div className="flex flex-col items-center">
+          <Image className="rounded-lg" src={`https://${data.profile_image}`} width={300} height={300} alt="로고"></Image>
+          <Card x-chunk="dashboard-01-chunk-0">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardContent className="text-2xl font-bold">
+                {data.station.user_nick}({data.station.user_id})
+              </CardContent>
+            </CardHeader>
+          </Card>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
           <Card x-chunk="dashboard-01-chunk-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Total Revenue 
+                애청자 수 
               </CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+              <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$45,231.89</div>
-              <p className="text-xs text-muted-foreground">
-                +20.1% from last month
-              </p>
+              <div className="text-2xl font-bold">{Number(data.station.upd.fan_cnt).toLocaleString()}</div>
             </CardContent>
           </Card>
           <Card x-chunk="dashboard-01-chunk-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Subscriptions</CardTitle>
+              <CardTitle className="text-sm font-medium">누적 유저</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+2350</div>
-              <p className="text-xs text-muted-foreground">
-                +180.1% from last month
-              </p>
+              <div className="text-2xl font-bold">{Number(data.station.upd.total_view_cnt).toLocaleString()}</div>
             </CardContent>
           </Card>
           <Card x-chunk="dashboard-01-chunk-2">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Sales</CardTitle>
-              <CreditCard className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium">누적 업</CardTitle>
+              <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+12,234</div>
-              <p className="text-xs text-muted-foreground">+19% from last month</p>
+              <div className="text-2xl font-bold">{Number(data.station.upd.total_ok_cnt).toLocaleString()}</div>
             </CardContent>
           </Card>
           <Card x-chunk="dashboard-01-chunk-3">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Now</CardTitle>
+              <CardTitle className="text-sm font-medium">구독팬 수</CardTitle>
+              <Users className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{Number(data.subscription.count).toLocaleString()}</div>
+            </CardContent>
+          </Card>
+          <Card x-chunk="dashboard-01-chunk-3">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">누적 방송시간</CardTitle>
               <Activity className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+573</div>
-              <p className="text-xs text-muted-foreground">+201 since last hour</p>
+              <div className="text-2xl font-bold">{Number(data.station.total_broad_time).toLocaleString()}</div>
+            </CardContent>
+          </Card>
+          <Card x-chunk="dashboard-01-chunk-3">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">방송국 개설일</CardTitle>
+              <Activity className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{data.station.jointime}</div>
             </CardContent>
           </Card>
         </div>
