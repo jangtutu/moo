@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DollarSign, Users, CreditCard, Activity } from "lucide-react";
+import { Users, Activity } from "lucide-react";
 import Image from "next/image";
 
 interface StreamerData {
@@ -44,7 +44,6 @@ export default async function Page({ params }: PageProps) {
     }
 
     const data: StreamerData = await res.json();
-    console.log(data);
 
     return (
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
