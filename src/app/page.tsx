@@ -37,6 +37,7 @@ export default function Home() {
   const [moomemData, setMoomemData] = useState<Broadcast[]>([]);
   const [moobillingData, setMoobillingData] = useState<Broadcast[]>([]);
 
+
   useEffect(() => {
     async function fetchIDs() {
       const { data: ids, error } = await supabase.from("streamer").select("id, position");
@@ -82,7 +83,6 @@ export default function Home() {
           {moosuData.map((broadcast, index) => (
             <Card className={styles.container__moosu__list} key={index}>
               <CardHeader className={styles.container__cardheader}>
-                <a href={`https://play.sooplive.co.kr/${broadcast.station.user_id}`}>
                 <Image
                   src={broadcast.broad?.broad_no
                     ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
@@ -93,15 +93,14 @@ export default function Home() {
                   height={300}
                   className={styles.container__cardheader__liveimg}
                 />
-                </a>
                 <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer.toLocaleString() || '0'}</span>
                 <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
-                <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
-                  <AvatarImage src={broadcast.profile_image} />
-                </a>
+                  <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
+                    <AvatarImage src={broadcast.profile_image} />
+                  </a>
                   <AvatarFallback>배너</AvatarFallback>
                 </Avatar>
                 <div className="ml-2">
@@ -122,25 +121,25 @@ export default function Home() {
             <Card className={styles.container__moobilling__list} key={index}>
               <CardHeader className={styles.container__cardheader}>
                 <a href={`https://play.sooplive.co.kr/${broadcast.station.user_id}`}>
-                <Image
-                  src={broadcast.broad?.broad_no
-                    ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
-                    : '/images/offline.png'
-                  }
-                  alt="생방송 이미지"
-                  width={350}
-                  height={300}
-                  className={styles.container__cardheader__liveimg}
-                />
+                  <Image
+                    src={broadcast.broad?.broad_no
+                      ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
+                      : '/images/offline.png'
+                    }
+                    alt="생방송 이미지"
+                    width={350}
+                    height={300}
+                    className={styles.container__cardheader__liveimg}
+                  />
                 </a>
                 <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer.toLocaleString() || '0'}</span>
                 <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
-                <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
-                  <AvatarImage src={broadcast.profile_image} />
-                </a>
+                  <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
+                    <AvatarImage src={broadcast.profile_image} />
+                  </a>
                   <AvatarFallback>배너</AvatarFallback>
                 </Avatar>
                 <div className="ml-2">
@@ -161,25 +160,25 @@ export default function Home() {
             <Card className={styles.container__moomem__list} key={index}>
               <CardHeader className={styles.container__cardheader}>
                 <a href={`https://play.sooplive.co.kr/${broadcast.station.user_id}`}>
-                <Image
-                  src={broadcast.broad?.broad_no
-                    ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
-                    : '/images/offline.png'
-                  }
-                  alt="생방송 이미지"
-                  width={350}
-                  height={300}
-                  className={styles.container__cardheader__liveimg}
-                />
+                  <Image
+                    src={broadcast.broad?.broad_no
+                      ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
+                      : '/images/offline.png'
+                    }
+                    alt="생방송 이미지"
+                    width={350}
+                    height={300}
+                    className={styles.container__cardheader__liveimg}
+                  />
                 </a>
                 <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer || '0'}</span>
                 <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
-                <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
-                  <AvatarImage src={broadcast.profile_image} />
-                </a>
+                  <a href={`https://sooplive.co.kr/${broadcast.station.user_id}`}>
+                    <AvatarImage src={broadcast.profile_image} />
+                  </a>
                   <AvatarFallback>배너</AvatarFallback>
                 </Avatar>
                 <div className="ml-2">
@@ -196,38 +195,7 @@ export default function Home() {
         </Card>
       </main>
 
-      <Button className={`${styles.container__multiviewbutton} ${multiViewButton ? styles.container__multiviewbuttonoff : ''}`} onClick={() => setMultiviewButton(!multiViewButton)}>멀티뷰로 보기</Button>
-      <div className={styles.container__multiviewbox}>
-        {multiViewButton && (
-          <div className={styles.container__multiviewbox__Wrap}>
-            <div className="flex flex-col flex-1 gap-4">
-              <div className="flex items-center gap-2">
-                <h3 className="font-bold">멀티뷰 <span className="opacity-50">최대 9개</span></h3>
-              </div>
-              <div className="flex flex-wrap justify-start gap-4 flex-1">
-                <div className={styles.container__multiviewbox__viewbox}>
-                  <div className={styles.container__multiviewbox__viewimg}>
-                  </div>
-                  <div className={styles.container__multiviewbox__viewdec}>
-                    <h5>방송을 선택하세요!</h5>
-                    <div className="opacity: 0.5;">
-                      클릭시 삭제됩니다.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 flex-shrink-0 ml-4">
-              <div className="flex flex-col gap-2">
-                <div className="flex gap-2">
-                  <button className={styles.container__multiviewbox__button}>소프트콘 멀티뷰</button>
-                </div>
-                <button className={styles.container__multiviewbox__button} onClick={() => setMultiviewButton(false)}>닫기</button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+      <Button className={styles.container__multiviewbutton}>멀티뷰로 보기</Button>
 
 
 
