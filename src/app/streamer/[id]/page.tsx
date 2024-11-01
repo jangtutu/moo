@@ -48,7 +48,7 @@ export default async function Page({ params }: PageProps) {
     return (
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="flex flex-col items-center">
-          <Image className="rounded-lg" src={`https://${data.profile_image}`} width={300} height={300} alt="로고"></Image>
+          <Image className="rounded-lg" src={data.profile_image} width={300} height={300} alt="로고"></Image>
           <Card x-chunk="dashboard-01-chunk-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardContent className="text-2xl font-bold">
