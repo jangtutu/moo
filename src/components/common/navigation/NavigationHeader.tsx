@@ -29,7 +29,7 @@ export default function NavigationMenuDemo() {
   const [moomem, setMoomem] = useState<Streamer[]>([]);
   const [moobilling, setMoobilling] = useState<Streamer[]>([]);
 
-  const getStreamerData = async (position: string, setState: React.Dispatch<React.SetStateAction<any>>) => {
+  const getStreamerData = async (position: string, setState: React.Dispatch<React.SetStateAction<Streamer[]>>) => {
     const { data, error } = await supabase
       .from("streamer")
       .select("*")
