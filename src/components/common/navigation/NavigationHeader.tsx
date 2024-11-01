@@ -62,7 +62,7 @@ export default function NavigationMenuDemo() {
           <NavigationMenuTrigger>무수</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              {moosu && moosu.map((item:any) => {
+              {moosu && moosu.map((item:Streamer) => {
                 return (
                   <ListItem href={`/streamer/${item.id}`} title={item.name} key={item.no}>
                   ({item.id})
@@ -76,7 +76,7 @@ export default function NavigationMenuDemo() {
           <NavigationMenuTrigger>무과금(임시)</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {moobilling && moobilling.map((item:any)=> {
+              {moobilling && moobilling.map((item:Streamer)=> {
                 return (
                   <ListItem href={`/streamer/${item.id}`} title={item.name} key={item.no}>
                   ({item.id})
@@ -90,7 +90,7 @@ export default function NavigationMenuDemo() {
           <NavigationMenuTrigger>무멤</NavigationMenuTrigger>
           <NavigationMenuContent>
           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {moomem && moomem.map((item:any)=> {
+              {moomem && moomem.map((item:Streamer)=> {
                 return (
                   <ListItem href={`/streamer/${item.id}`} title={item.name} key={item.no}>
                   ({item.id})
