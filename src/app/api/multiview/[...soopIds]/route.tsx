@@ -6,7 +6,7 @@ export async function GET(request: Request, { params }: { params: { soopIds: str
 
   const streams = soopIds.map((id) => ({
     name: id,
-    player: `https://play.sooplive.co.kr/${id}/embed?showChat=true`,
+    player: `https://play.sooplive.co.kr/${id}/embed?`,
   }));
 
   return NextResponse.json(streams);

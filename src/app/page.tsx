@@ -11,6 +11,9 @@ import styles from "./page.module.scss";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
+import { useToast } from "@/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast"
+import { useRouter } from "next/navigation";
 
 interface Broadcast {
   profile_image: string;
@@ -32,10 +35,48 @@ interface Streamer {
 
 export default function Home() {
 
-  const [multiViewButton, setMultiviewButton] = useState(false);
   const [moosuData, setMoosuData] = useState<Broadcast[]>([]);
   const [moomemData, setMoomemData] = useState<Broadcast[]>([]);
   const [moobillingData, setMoobillingData] = useState<Broadcast[]>([]);
+  const [selectedCardIds, setSelectedCardIds] = useState<string[]>([]);
+  const { toast } = useToast();
+  const router = useRouter();
+
+  const toggleCardBorder = (userId: string) => {
+    setSelectedCardIds((prevSelected) => {
+
+      if (prevSelected.includes(userId)) {
+        return prevSelected.filter((id) => id !== userId);
+      }
+
+      if (prevSelected.length < 9) {
+        return [...prevSelected, userId];
+      }
+      toast({
+        title: "멀티뷰 최대갯수 초과",
+        description: "최대 9개의 스트리밍만 가능합니다.",
+        action: (
+          <ToastAction altText="Goto schedule to undo">확인</ToastAction>
+        ),
+      });
+      return prevSelected;
+    });
+  };
+
+  const multiViewClick = () => {
+    if(selectedCardIds.length === 0) {
+      toast({
+        title: "선택된 스트리밍이 없습니다",
+        description: "최소 1개 이상의 스트리밍을 선택해주세요.",
+        action: (
+          <ToastAction altText="Goto schedule to undo">확인</ToastAction>
+        ),
+      });
+      return;
+    }
+    const idsQuery = selectedCardIds.join("/");
+    router.push(`/multiview/${idsQuery}`);
+  };
 
 
   useEffect(() => {
@@ -81,7 +122,13 @@ export default function Home() {
       <main className={styles.container}>
         <Card className={styles.container__moosu}>
           {moosuData.map((broadcast, index) => (
-            <Card className={styles.container__moosu__list} key={index}>
+            <Card
+            className={`${styles.container__moosu__list} ${
+              selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+            }`}
+            key={index}
+            onClick={() => toggleCardBorder(broadcast.station.user_id)}
+          >
               <CardHeader className={styles.container__cardheader}>
                 <Image
                   src={broadcast.broad?.broad_no
@@ -118,9 +165,13 @@ export default function Home() {
 
         <Card className={styles.container__moobilling}>
           {moobillingData.map((broadcast, index) => (
-            <Card className={styles.container__moobilling__list} key={index}>
+            <Card className={`${styles.container__moobilling__list} ${
+              selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+            }`}
+            key={index}
+            onClick={() => toggleCardBorder(broadcast.station.user_id)}
+          >
               <CardHeader className={styles.container__cardheader}>
-                <a href={`https://play.sooplive.co.kr/${broadcast.station.user_id}`}>
                   <Image
                     src={broadcast.broad?.broad_no
                       ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
@@ -131,7 +182,6 @@ export default function Home() {
                     height={300}
                     className={styles.container__cardheader__liveimg}
                   />
-                </a>
                 <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer.toLocaleString() || '0'}</span>
                 <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
               </CardHeader>
@@ -159,7 +209,6 @@ export default function Home() {
           {moomemData.map((broadcast, index) => (
             <Card className={styles.container__moomem__list} key={index}>
               <CardHeader className={styles.container__cardheader}>
-                <a href={`https://play.sooplive.co.kr/${broadcast.station.user_id}`}>
                   <Image
                     src={broadcast.broad?.broad_no
                       ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
@@ -170,7 +219,6 @@ export default function Home() {
                     height={300}
                     className={styles.container__cardheader__liveimg}
                   />
-                </a>
                 <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer || '0'}</span>
                 <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
               </CardHeader>
@@ -195,7 +243,7 @@ export default function Home() {
         </Card>
       </main>
 
-      <Button className={styles.container__multiviewbutton}>멀티뷰로 보기</Button>
+      <Button className={styles.container__multiviewbutton} onClick={multiViewClick}>멀티뷰로 보기</Button>
 
 
 

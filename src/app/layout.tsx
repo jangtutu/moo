@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 import NavigationHeader from "@/components/common/navigation/NavigationHeader";
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -35,6 +36,7 @@ export default function RootLayout({
         <NavigationHeader/>
         {children}
       </ThemeProvider>
+      <Toaster />
       </body>
     </html>
   );
