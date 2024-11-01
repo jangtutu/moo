@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request, { params }: { params: { soopIds: string[] } }) {
   const { soopIds } = params;
-  console.log(soopIds);
 
   const streams = soopIds.map((id) => ({
     name: id,

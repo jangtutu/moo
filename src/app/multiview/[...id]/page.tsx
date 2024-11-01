@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation';
 import styles from "./page.module.scss";
 
 async function fetchStreams(soopIds: string[]) {
-  const response = await fetch(`http://localhost:3000/api/multiview/${soopIds.join('/')}`);
+  const apiUrl = typeof window !== 'undefined' ? window.location.origin : '';
+  const response = await fetch(`${apiUrl}/api/multiview/${soopIds.join('/')}`);
   return await response.json();
 }
 
