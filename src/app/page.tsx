@@ -221,7 +221,12 @@ export default function Home() {
 
         <Card className={styles.container__moomem}>
           {moomemData.map((broadcast, index) => (
-            <Card className={styles.container__moomem__list} key={index}>
+            <Card
+              className={`${styles.container__moomem__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+                }`}
+              key={index}
+              onClick={() => toggleCardBorder(broadcast.station.user_id)}
+            >
               <CardHeader className={styles.container__cardheader}>
                 <Image
                   src={broadcast.broad?.broad_no
