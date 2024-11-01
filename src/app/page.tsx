@@ -64,7 +64,7 @@ export default function Home() {
   };
 
   const multiViewClick = () => {
-    if(selectedCardIds.length === 0) {
+    if (selectedCardIds.length === 0) {
       toast({
         title: "선택된 스트리밍이 없습니다",
         description: "최소 1개 이상의 스트리밍을 선택해주세요.",
@@ -123,12 +123,11 @@ export default function Home() {
         <Card className={styles.container__moosu}>
           {moosuData.map((broadcast, index) => (
             <Card
-            className={`${styles.container__moosu__list} ${
-              selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
-            }`}
-            key={index}
-            onClick={() => toggleCardBorder(broadcast.station.user_id)}
-          >
+              className={`${styles.container__moosu__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+                }`}
+              key={index}
+              onClick={() => toggleCardBorder(broadcast.station.user_id)}
+            >
               <CardHeader className={styles.container__cardheader}>
                 <Image
                   src={broadcast.broad?.broad_no
@@ -140,8 +139,16 @@ export default function Home() {
                   height={300}
                   className={styles.container__cardheader__liveimg}
                 />
-                <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer.toLocaleString() || '0'}</span>
-                <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
+                {broadcast.broad && (
+                  <>
+                    <span className={styles.container__cardheader__view}>
+                      {broadcast.broad.current_sum_viewer.toLocaleString() || '0'}
+                    </span>
+                    <span className={styles.container__cardheader__livestart}>
+                      {broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작
+                    </span>
+                  </>
+                )}
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
@@ -165,25 +172,32 @@ export default function Home() {
 
         <Card className={styles.container__moobilling}>
           {moobillingData.map((broadcast, index) => (
-            <Card className={`${styles.container__moobilling__list} ${
-              selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
-            }`}
-            key={index}
-            onClick={() => toggleCardBorder(broadcast.station.user_id)}
-          >
+            <Card className={`${styles.container__moobilling__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+              }`}
+              key={index}
+              onClick={() => toggleCardBorder(broadcast.station.user_id)}
+            >
               <CardHeader className={styles.container__cardheader}>
-                  <Image
-                    src={broadcast.broad?.broad_no
-                      ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
-                      : '/images/offline.png'
-                    }
-                    alt="생방송 이미지"
-                    width={350}
-                    height={300}
-                    className={styles.container__cardheader__liveimg}
-                  />
-                <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer.toLocaleString() || '0'}</span>
-                <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
+                <Image
+                  src={broadcast.broad?.broad_no
+                    ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
+                    : '/images/offline.png'
+                  }
+                  alt="생방송 이미지"
+                  width={350}
+                  height={300}
+                  className={styles.container__cardheader__liveimg}
+                />
+                {broadcast.broad && (
+                  <>
+                    <span className={styles.container__cardheader__view}>
+                      {broadcast.broad.current_sum_viewer.toLocaleString() || '0'}
+                    </span>
+                    <span className={styles.container__cardheader__livestart}>
+                      {broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작
+                    </span>
+                  </>
+                )}
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
@@ -209,18 +223,26 @@ export default function Home() {
           {moomemData.map((broadcast, index) => (
             <Card className={styles.container__moomem__list} key={index}>
               <CardHeader className={styles.container__cardheader}>
-                  <Image
-                    src={broadcast.broad?.broad_no
-                      ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
-                      : '/images/offline.png'
-                    }
-                    alt="생방송 이미지"
-                    width={350}
-                    height={300}
-                    className={styles.container__cardheader__liveimg}
-                  />
-                <span className={styles.container__cardheader__view}>{broadcast.broad?.current_sum_viewer || '0'}</span>
-                <span className={styles.container__cardheader__livestart}>{broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작</span>
+                <Image
+                  src={broadcast.broad?.broad_no
+                    ? `https://liveimg.sooplive.co.kr/m/${broadcast.broad.broad_no}`
+                    : '/images/offline.png'
+                  }
+                  alt="생방송 이미지"
+                  width={350}
+                  height={300}
+                  className={styles.container__cardheader__liveimg}
+                />
+                {broadcast.broad && (
+                  <>
+                    <span className={styles.container__cardheader__view}>
+                      {broadcast.broad.current_sum_viewer.toLocaleString() || '0'}
+                    </span>
+                    <span className={styles.container__cardheader__livestart}>
+                      {broadcast.station.broad_start || '방송 시작 시간 없음'} 방송시작
+                    </span>
+                  </>
+                )}
               </CardHeader>
               <CardContent className={styles.container__cardcontent}>
                 <Avatar>
