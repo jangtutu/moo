@@ -16,15 +16,21 @@ import ModeToggle from "@/components/common/toggle/ModeToggle"
 import { supabase } from "@/utils/supabase";
 import { useEffect,useState } from "react"
 import Image from "next/image";
+
+interface Streamer {
+  id: string;
+  name: string;
+  no: number;
+}
  
 export default function NavigationMenuDemo() {
 
-  const [moosu, setMoosu] = useState<any>([]);
-  const [moomem, setMoomem] = useState<any>([]);
-  const [moobilling, setMoobilling] = useState<any>([]);
+  const [moosu, setMoosu] = useState<Streamer[]>([]);
+  const [moomem, setMoomem] = useState<Streamer[]>([]);
+  const [moobilling, setMoobilling] = useState<Streamer[]>([]);
 
   const getStreamerData = async (position: string, setState: React.Dispatch<React.SetStateAction<any>>) => {
-    let { data, error } = await supabase
+    const { data, error } = await supabase
       .from("streamer")
       .select("*")
       .eq("position", position);
