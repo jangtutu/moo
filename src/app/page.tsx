@@ -37,7 +37,7 @@ export default function Home() {
 
   const [moosuData, setMoosuData] = useState<Broadcast[]>([]);
   const [moomemData, setMoomemData] = useState<Broadcast[]>([]);
-  const [moobillingData, setMoobillingData] = useState<Broadcast[]>([]);
+  const [bonghwangData, setBonghwangData] = useState<Broadcast[]>([]);
   const [selectedCardIds, setSelectedCardIds] = useState<string[]>([]);
   const { toast } = useToast();
   const router = useRouter();
@@ -89,7 +89,7 @@ export default function Home() {
 
       const moosuIds = ids.filter((item) => item.position === "무수");
       const moomemIds = ids.filter((item) => item.position === "무멤");
-      const moobillingIds = ids.filter((item) => item.position === "무과금");
+      const bonghwangIds = ids.filter((item) => item.position === "봉황");
 
       const fetchBroadcasts = async (idGroup: Streamer[]) => {
         return await Promise.all(
@@ -107,11 +107,11 @@ export default function Home() {
 
       const moosuBroadcasts = await fetchBroadcasts(moosuIds);
       const moomemBroadcasts = await fetchBroadcasts(moomemIds);
-      const moobillingBroadcasts = await fetchBroadcasts(moobillingIds);
+      const bonghwangBroadcasts = await fetchBroadcasts(bonghwangIds);
 
       setMoosuData(moosuBroadcasts);
       setMoomemData(moomemBroadcasts);
-      setMoobillingData(moobillingBroadcasts);
+      setBonghwangData(bonghwangBroadcasts);
     }
 
     fetchIDs();
@@ -170,9 +170,9 @@ export default function Home() {
           ))}
         </Card>
 
-        <Card className={styles.container__moobilling}>
-          {moobillingData.map((broadcast, index) => (
-            <Card className={`${styles.container__moobilling__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+        <Card className={styles.container__bonghwang}>
+          {bonghwangData.map((broadcast, index) => (
+            <Card className={`${styles.container__bonghwang__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
               }`}
               key={index}
               onClick={() => toggleCardBorder(broadcast.station.user_id)}
