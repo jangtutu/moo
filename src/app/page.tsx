@@ -81,7 +81,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchIDs() {
-      const { data: ids, error } = await supabase.from("streamer").select("id, position");
+      const { data: ids, error } = await supabase.from("streamer").select("id, position").order("no");
       if (error) {
         console.error("Error fetching IDs:", error);
         return;

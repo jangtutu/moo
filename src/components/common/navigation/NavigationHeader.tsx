@@ -34,7 +34,8 @@ export default function NavigationMenuDemo() {
     const { data, error } = await supabase
       .from("streamer")
       .select("*")
-      .eq("position", position);
+      .eq("position", position)
+      .order("no");
 
     if (error) {
       console.log(`Error fetching ${position} data:`, error);
