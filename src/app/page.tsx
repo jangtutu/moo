@@ -48,18 +48,7 @@ export default function Home() {
       if (prevSelected.includes(userId)) {
         return prevSelected.filter((id) => id !== userId);
       }
-
-      if (prevSelected.length < 9) {
-        return [...prevSelected, userId];
-      }
-      toast({
-        title: "멀티뷰 최대갯수 초과",
-        description: "최대 9개의 스트리밍만 가능합니다.",
-        action: (
-          <ToastAction altText="Goto schedule to undo">확인</ToastAction>
-        ),
-      });
-      return prevSelected;
+      return [...prevSelected, userId];
     });
   };
 
@@ -121,7 +110,7 @@ export default function Home() {
     <div>
       <main className={styles.container}>
 
-      <Card className={styles.container__bonghwang}>
+        <Card className={styles.container__bonghwang}>
           {bonghwangData.map((broadcast, index) => (
             <Card className={`${styles.container__bonghwang__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
               }`}
@@ -169,7 +158,7 @@ export default function Home() {
             </Card>
           ))}
         </Card>
-        
+
         <Card className={styles.container__moosu}>
           {moosuData.map((broadcast, index) => (
             <Card
