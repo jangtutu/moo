@@ -5,7 +5,7 @@ import Image from "next/image";
 interface StreamerData {
   profile_image: string;
   station: {
-    total_broad_time: string;
+    total_broad_time: number;
     jointime: string;
   upd: {
     fan_cnt: string;
@@ -25,6 +25,15 @@ interface PageProps {
     id: string;
   };
 }
+
+const formatSeconds = (seconds: number): string => {
+  const days = Math.floor(seconds / (24 * 3600));
+  const hours = Math.floor((seconds % (24 * 3600)) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+
+  return `${days}일 ${hours}시간 ${minutes}분 ${secs}초`;
+};
 
 export default async function Page({ params }: PageProps) {
   const { id } = params;
@@ -102,7 +111,7 @@ export default async function Page({ params }: PageProps) {
               <Activity className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{Number(data.station.total_broad_time).toLocaleString()}</div>
+              <div className="text-2xl font-bold">{formatSeconds(data.station.total_broad_time)}</div>
             </CardContent>
           </Card>
           <Card x-chunk="dashboard-01-chunk-3">
