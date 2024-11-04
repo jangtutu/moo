@@ -120,11 +120,11 @@ export default function Home() {
   return (
     <div>
       <main className={styles.container}>
-        <Card className={styles.container__moosu}>
-          {moosuData.map((broadcast, index) => (
-            <Card
-              className={`${styles.container__moosu__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
-                }`}
+
+      <Card className={styles.container__bonghwang}>
+          {bonghwangData.map((broadcast, index) => (
+            <Card className={`${styles.container__bonghwang__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+              }`}
               key={index}
               onClick={() => toggleCardBorder(broadcast.station.user_id)}
             >
@@ -169,11 +169,12 @@ export default function Home() {
             </Card>
           ))}
         </Card>
-
-        <Card className={styles.container__bonghwang}>
-          {bonghwangData.map((broadcast, index) => (
-            <Card className={`${styles.container__bonghwang__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
-              }`}
+        
+        <Card className={styles.container__moosu}>
+          {moosuData.map((broadcast, index) => (
+            <Card
+              className={`${styles.container__moosu__list} ${selectedCardIds.includes(broadcast.station.user_id) ? styles.selected : ""
+                }`}
               key={index}
               onClick={() => toggleCardBorder(broadcast.station.user_id)}
             >

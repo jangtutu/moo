@@ -16,6 +16,7 @@ import ModeToggle from "@/components/common/toggle/ModeToggle"
 import { supabase } from "@/utils/supabase";
 import { useEffect,useState } from "react"
 import Image from "next/image";
+import Link from "next/link"
 
 interface Streamer {
   id: string;
@@ -51,18 +52,18 @@ export default function NavigationMenuDemo() {
   return (
   <header className="flex justify-between gap-4 border-b bg-background px-4 md:px-6 h-16 top-0">
     <div className="flex items-center">
-    <a href="/">
+    <Link href="/">
     <Image src="/images/mooboxBlack.png" alt="로고" width={50} height={50}></Image>
-    </a>
+    </Link>
     </div>
     <div className="flex-1 flex justify-center">
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>무수</NavigationMenuTrigger>
+      <NavigationMenuItem>
+          <NavigationMenuTrigger>봉황</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              {moosu && moosu.map((item:Streamer) => {
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              {bonghwang && bonghwang.map((item:Streamer)=> {
                 return (
                   <ListItem href={`/streamer/${item.id}`} title={item.name} key={item.no}>
                   ({item.id})
@@ -73,10 +74,10 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>봉황</NavigationMenuTrigger>
+          <NavigationMenuTrigger>무수</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {bonghwang && bonghwang.map((item:Streamer)=> {
+              {moosu && moosu.map((item:Streamer) => {
                 return (
                   <ListItem href={`/streamer/${item.id}`} title={item.name} key={item.no}>
                   ({item.id})
