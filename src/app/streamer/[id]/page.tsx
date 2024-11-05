@@ -34,7 +34,7 @@ const formatSeconds = (seconds: number): string => {
 
   return `${days}일 ${hours}시간 ${minutes}분 ${secs}초`;
 };
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 export default async function Page({ params }: PageProps) {
   const { id } = params;
