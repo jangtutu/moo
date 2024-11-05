@@ -10,8 +10,6 @@ async function fetchStreams(soopIds: string[]) {
   return await response.json();
 }
 
-export const runtime = 'edge';
-
 function HomePage() {
   const [streams, setStreams] = useState<{ name: string; player: string }[]>([]);
   const pathname = usePathname();
