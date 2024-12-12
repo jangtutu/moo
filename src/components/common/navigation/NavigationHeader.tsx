@@ -28,7 +28,6 @@ export default function NavigationMenuDemo() {
 
   const [moosu, setMoosu] = useState<Streamer[]>([]);
   const [moomem, setMoomem] = useState<Streamer[]>([]);
-  const [bonghwang, setBonghwang] = useState<Streamer[]>([]);
 
   const getStreamerData = async (position: string, setState: React.Dispatch<React.SetStateAction<Streamer[]>>) => {
     const { data, error } = await supabase
@@ -47,7 +46,6 @@ export default function NavigationMenuDemo() {
   useEffect(() => {
     getStreamerData("무수", setMoosu);
     getStreamerData("무멤", setMoomem);
-    getStreamerData("봉황", setBonghwang);
   }, []);
 
   return (
@@ -60,20 +58,6 @@ export default function NavigationMenuDemo() {
     <div className="flex-1 flex justify-center">
     <NavigationMenu>
       <NavigationMenuList>
-      <NavigationMenuItem>
-          <NavigationMenuTrigger>봉황</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {bonghwang && bonghwang.map((item:Streamer)=> {
-                return (
-                  <ListItem href={`/streamer/${item.id}`} title={item.name} key={item.no}>
-                  ({item.id})
-                  </ListItem>
-                );
-              })}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>무수</NavigationMenuTrigger>
           <NavigationMenuContent>
