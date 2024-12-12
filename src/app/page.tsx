@@ -206,7 +206,12 @@ export default function Home() {
         </Card>
       </main>
 
-      <Button className={styles.container__multiviewbutton} onClick={multiViewClick}>멀티뷰로 보기</Button>
+      <Button
+        className={`${styles.container__multiviewbutton} text-white dark:text-white`}
+        onClick={multiViewClick}
+      >
+        멀티뷰로 보기
+      </Button>
 
 
 
